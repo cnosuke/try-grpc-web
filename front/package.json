@@ -8,6 +8,12 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "prettier": "^1.14.3",
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0",
+    "pug-plain-loader": "^1.0.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.0",
     "vue": "^2.5.17",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.0.0",
@@ -18,7 +24,7 @@
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-plugin-typescript": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
-    "less": "^3.0.4",
+    "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "typescript": "^3.0.0",
     "vue-template-compiler": "^2.5.17"
