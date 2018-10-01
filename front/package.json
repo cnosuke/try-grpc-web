@@ -6,13 +6,18 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "prettier": "yarn exec -- prettier --write \"src/**/*.ts\" \"src/**/*.vue\" \"src/**/*.js\""
+    "prettier": "yarn exec -- prettier --write \"src/**/*.ts\" \"src/**/*.vue\" \"src/**/*.js\"",
+    "protoc": "protoc --plugin=\"protoc-gen-ts=./node_modules/.bin/protoc-gen-ts\" --js_out=\"import_style=commonjs,binary:./src/pb\" --ts_out=\"service=true:./src/pb\" -I ../server/proto/ ../server/proto/*.proto"
   },
   "dependencies": {
+    "@types/google-protobuf": "^3.2.7",
+    "google-protobuf": "^3.6.1",
+    "grpc-web-client": "^0.6.3",
     "prettier": "^1.14.3",
     "pug": "^2.0.3",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.0.0",
+    "ts-protoc-gen": "^0.7.6",
     "tslint-config-prettier": "^1.15.0",
     "tslint-plugin-prettier": "^2.0.0",
     "vue": "^2.5.17",
@@ -22,6 +27,7 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.1.0",
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-plugin-typescript": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
