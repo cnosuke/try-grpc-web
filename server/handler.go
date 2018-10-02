@@ -5,6 +5,7 @@ import (
 	"github.com/cnosuke/try-grpc-web/server/pb"
 	"github.com/golang/protobuf/ptypes"
 	"go.uber.org/zap"
+	"google.golang.org/grpc/metadata"
 	"time"
 )
 
@@ -22,6 +23,11 @@ func NewHandler(l *zap.SugaredLogger) *handler {
 
 func (h *handler) GetLatest(ctx context.Context, req *todo.GetLatestRequest) (res *todo.GetLatestResponse, err error) {
 	h.logger.Infow("GetLatest", "request", req)
+	md, ok := metadata.FromIncomingContext(ctx)
+	if ok {
+		h.logger.Infow("metadata", "auth", md["auth"][0])
+	}
+
 	ts, _ := ptypes.TimestampProto(time.Now())
 
 	return &todo.GetLatestResponse{

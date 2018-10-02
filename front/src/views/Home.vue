@@ -32,10 +32,12 @@ export default class Home extends Vue {
 
   mounted() {
     const req = new GetLatestRequest();
+    const meta = new grpc.Metadata({ auth: "foofoofoo" });
 
     grpc.unary(TodoService.GetLatest, {
       request: req,
       host: "http://127.0.0.1:7777",
+      metadata: meta,
       onEnd: res => {
         const { status, statusMessage, headers, message, trailers } = res;
         if (status === grpc.Code.OK && message) {
